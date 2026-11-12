@@ -1,0 +1,65 @@
+---
+title: "A Second Demonstration of Correlation Analysis in Python and Quarto"
+execute: 
+  echo: true
+---
+
+# Introduction 
+
+```{python}
+import pandas as pd 
+import numpy as np 
+
+import seaborn as sns
+
+sns.set_context('talk')
+
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset('diamonds')
+```
+The diamonds dataset form seaborn offers a great opportunity to learn more about correlation analysis in Python and Quarto where we will be working with data from `{python} f"{df.shape[0]}"` diamonds and our research question is to study whether the carat of the diamond is correlated with the depth of the diamond.
+
+# Literature Review 
+
+
+# Method 
+
+Given that we have two columns of continuous data (carat of diomand and depth of diamond), we will evaluate this relationship using simple correlation analysis and also a scatterplot. These two methods are classic and traditional starting points when evaluating data like these.  
+
+# Results
+
+```{python}
+corr_val = np.array(df[['carat', 'depth']].corr())[0][1]
+
+narrative = "a very strong negative correlation"
+
+if corr_val > 0.8:
+	narrative = "a very strong positive correlation"
+elif corr_val > 0.4:
+	narrative = "a moderate positive correlation"
+elif corr_val > 0:
+	narrative = "a weak positive correlation" 
+elif corr_val > -0.4:
+	narrative = "a moderate negative correlation"
+```
+Using the classic simple Pearson correlation approach these data produce a correlation coefficient of `{python} f"{corr_val:.5f}"`, so we conclude the relationship is `{python} f"{narrative}"`.  
+
+```{python}
+#| label: fig-length-width-scatterplot
+#| fig-cap: "A scatterplot of diamond carat and depth"
+
+fig, ax = plt.subplots(figsize = (6, 3.5))
+
+sns.scatterplot(data = df, y = 'depth', x = 'carat')
+
+plt.ylabel('Depth')
+plt.xlabel('Carat')
+```
+As shown in @fig-length-width-scatterplot we see additional evidence of a weak positive correlative relationship. 
+
+# Discussion 
+
+Now we know how to do correlation coefficient analysis from this example work-through of the diamond dataset using Python and Quarto and we have found a weak positive correlative relationship. 
+
+
