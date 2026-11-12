@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "A Second Demonstration of Correlation Analysis in Python and Quarto",
+    "section": "",
+    "text": "Introduction\n\nimport pandas as pd \nimport numpy as np \n\nimport seaborn as sns\n\nsns.set_context('talk')\n\nimport matplotlib.pyplot as plt\n\ndf = sns.load_dataset('diamonds')\n\nThe diamonds dataset form seaborn offers a great opportunity to learn more about correlation analysis in Python and Quarto where we will be working with data from 53940 diamonds and our research question is to study whether the carat of the diamond is correlated with the depth of the diamond.\n\n\nLiterature Review\n\n\nMethod\nGiven that we have two columns of continuous data (carat of diomand and depth of diamond), we will evaluate this relationship using simple correlation analysis and also a scatterplot. These two methods are classic and traditional starting points when evaluating data like these.\n\n\nResults\n\ncorr_val = np.array(df[['carat', 'depth']].corr())[0][1]\n\nnarrative = \"a very strong negative correlation\"\n\nif corr_val &gt; 0.8:\n    narrative = \"a very strong positive correlation\"\nelif corr_val &gt; 0.4:\n    narrative = \"a moderate positive correlation\"\nelif corr_val &gt; 0:\n    narrative = \"a weak positive correlation\" \nelif corr_val &gt; -0.4:\n    narrative = \"a moderate negative correlation\"\n\nUsing the classic simple Pearson correlation approach these data produce a correlation coefficient of 0.02822, so we conclude the relationship is a weak positive correlation.\n\nfig, ax = plt.subplots(figsize = (6, 3.5))\n\nsns.scatterplot(data = df, y = 'depth', x = 'carat')\n\nplt.ylabel('Depth')\nplt.xlabel('Carat')\n\n\n\n\n\n\n\nFigure 1: A scatterplot of diamond carat and depth\n\n\n\n\n\nAs shown in Figure 1 we see additional evidence of a weak positive correlative relationship.\n\n\nDiscussion\nNow we know how to do correlation coefficient analysis from this example work-through of the diamond dataset using Python and Quarto and we have found a weak positive correlative relationship."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]
